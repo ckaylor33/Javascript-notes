@@ -55,3 +55,67 @@ checkMiddleSeat(`3E`);
 // why do strings have methods?
 // JS converts the string primitive to a string object to use the method on; it does this behind the scenes. This process is called boxing.
 // the object is then converted back to a primitive string when the operation finishes
+
+// PART 2
+// change the case of a string
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+//can also call directly on a string:
+console.log(`charlie`.toUpperCase());
+
+// Fix caplitalization in name
+const passenger = `cHarlie`;
+// first step to put everything into lower case
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+//Could create a function which takes any passenger names and returns the correct version
+
+// Compare email
+const email = `hello@charlie.io`;
+const loginEmail = `  Hello@Charlie.Io \n`;
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// could we do this all in one step?
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+// Replacing
+const priceGB = `£288,97`;
+const priceUS = priceGB.replace(`£`, `$`).replace(`,`, `.`);
+console.log(priceUS);
+// replace creates a brand new string, doesn't mutate original one
+
+const announcement = `All passengers come to boarding door 23. Boarding door 23.`;
+console.log(announcement.replaceAll(`door`, `gate`));
+// replaceAll new feature - can also use regular expression below
+console.log(announcement.replace(/door/g, `gate`));
+
+// Booleans
+const plane2 = `Airbus A320neo`;
+console.log(plane2.includes(`A320`)); // true
+console.log(plane2.includes(`Boeing`)); // false
+console.log(plane2.startsWith(`Air`)); // true
+
+if (plane2.startsWith(`Airbus`) && plane2.endsWith(`neo`)) {
+  console.log(`Part of the new Airbus family.`);
+}
+
+// Practice exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes(`knife`) || baggage.includes(`gun`)) {
+    console.log(`You are not allowed on board`);
+  } else {
+    console.log(`Welcome aboard!`);
+  }
+};
+checkBaggage(`I have a laptop, some Food and a pocket Knife`);
+checkBaggage(`I have some socks and a camera`);
+checkBaggage(`Got some snacks and a gun for protection`);
+
+// PART 3
