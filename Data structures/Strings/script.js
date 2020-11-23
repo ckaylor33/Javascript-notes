@@ -119,3 +119,55 @@ checkBaggage(`I have some socks and a camera`);
 checkBaggage(`Got some snacks and a gun for protection`);
 
 // PART 3
+// Split and join
+console.log(`a+very+nice+string`.split(`+`));
+// splits and puts into an array
+console.log(`Charlie Kaylor`.split(` `));
+
+// can then use destructuring to create variables
+const [firstName, lastName] = `Charlie Kaylor`.split(` `);
+
+const newName = [`Mr.`, firstName, lastName.toUpperCase()].join(` `);
+console.log(newName);
+// results in one string composed of the three parts of the array and joined together
+
+const capitalizeName = function (name) {
+  const names = name.split(` `);
+  const namesUpper = [];
+  for (const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+    // two different ways of doing this
+  }
+  console.log(namesUpper.join(` `));
+};
+// how do we capitalize this name?
+capitalizeName(`jessica ann smith davis`);
+capitalizeName(`charlie kaylor`);
+
+// Padding a string
+const message = `Go to gate 23!`;
+console.log(message.padStart(25, `+`).padEnd(35, `+`));
+// first argument is how many characters you want the string to be, then the character we want to pad the string with
+
+const maskCreditCard = function (number) {
+  const str = number + ``;
+  // when one of the operands is a string it will convert the others to a string
+  const last = str.slice(-4);
+  return last.padStart(str.length, `*`);
+};
+console.log(maskCreditCard(433333767));
+console.log(maskCreditCard(4333337678557857));
+console.log(maskCreditCard(`8638648907397082`));
+
+// Repeat
+const message2 = `Bad weather... All departures delayed... `;
+console.log(message2.repeat(5));
+// argument the number of times you want the string repeated
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'🛩'.repeat(n)}`);
+};
+planesInLine(5);
+planesInLine(3);
+planesInLine(12);
