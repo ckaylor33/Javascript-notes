@@ -31,3 +31,33 @@ booker();
 // closure also has priority over the scope chain
 
 console.dir(booker);
+
+// Example 1
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+console.dir(f);
+// re-assigning f function
+h();
+f();
+console.dir(f);
+// even though the f variable was defined in the global scope, it still closes over the variable environment of the g function - including the a variable that it has access to even after the g function has finished its execution
+//  a variable inside the backpack of the f function
+// closure changes as variable re-assigned
+
+// Example 2
